@@ -1,0 +1,43 @@
+name: Validate
+on: [push, pull_request]
+
+concurrency:
+  group: ci-${{github.actor}}-${{github.head_ref || github.run_number}}-${{github.ref}}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ${{matrix.windows-version}}
+    strategy:
+      matrix:
+        include:
+          - windows-version: windows-2019
+            visual-studio-version: 16.11
+          - windows-version: windows-2022
+            visual-studio-version: 17.10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Add MSBuild to PATH
+        uses: microsoft/setup-msbuild@v2
+        with:
+          vs-version: ${{matrix.visual-studio-version}}
+          msbuild-architecture: x64
+
+      - name: Build Native Bridge
+        run: msbuild /t:Restore,Build /p:Configuration=Release ./SharpShellNativeBridge/SharpShellNativeBridge.sln
+
+      - name: Build SharpShell
+        run: msbuild /t:Restore,Build /p:Configuration=Release ./SharpShell/SharpShell.sln
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{matrix.windows-version}}
+          path: |
+            ./SharpShellNativeBridge/artifacts
+            ./SharpShell/artifacts
