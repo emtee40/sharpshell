@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerManager", "Tools\Serv
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Tools", "2. Tools", "{2B76CB23-07D4-4139-9872-3FF41FEA6F24}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Info", "0. Info", "{A5AA3023-8450-45C8-BBB4-F5DB373AFF7D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Shared", "0. Shared", "{A5AA3023-8450-45C8-BBB4-F5DB373AFF7D}"
 	ProjectSection(SolutionItems) = preProject
-		SharedAssemblyInfo.cs = SharedAssemblyInfo.cs
+		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CountLinesExtension", "Samples\ContextMenu\CountLinesExtension\CountLinesExtension.csproj", "{E48D396E-04AC-40C8-9046-66A896EF3568}"

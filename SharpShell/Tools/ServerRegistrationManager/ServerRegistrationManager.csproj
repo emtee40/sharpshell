@@ -2,29 +2,16 @@
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <OutputType>Exe</OutputType>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Description>Server Registration Manager for SharpShell, can be used in install or uninstall servers</Description>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="..\..\SharedAssemblyInfo.cs">
-      <Link>Properties\SharedAssemblyInfo.cs</Link>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="app.manifest">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SharpShell\SharpShell.csproj" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Actions\Help.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="EmbeddedReferences\SharpShell.dll" />
   </ItemGroup>
   <ItemGroup>
