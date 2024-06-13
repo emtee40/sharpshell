@@ -12,13 +12,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Actions\Help.txt" />
-    <EmbeddedResource Include="EmbeddedReferences\SharpShell.dll" />
+    <EmbeddedResource Include="..\..\SharpShell\bin\$(Configuration)\$(TargetFramework)\SharpShell.dll" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Copy SourceFiles="$(SolutionDir)artifacts\build\SharpShell\SharpShell.dll" DestinationFolder="$(ProjectDir)EmbeddedReferences" />
-  </Target>
 </Project>

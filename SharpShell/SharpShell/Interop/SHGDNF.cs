@@ -16,7 +16,7 @@ namespace SharpShell.Interop
         SHGDN_NORMAL = 0x0000,
 
         /// <summary>
-        /// The name is relative to the folder from which the request was made. This is the name display to the user when used in the context of the folder. For example, it is used in the view and in the address bar path segment for the folder. This name should not include disambiguation information—for instance "username" instead of "username (on Machine)" for a particular user's folder.
+        /// The name is relative to the folder from which the request was made. This is the name display to the user when used in the context of the folder. For example, it is used in the view and in the address bar path segment for the folder. This name should not include disambiguation informationâ€”for instance "username" instead of "username (on Machine)" for a particular user's folder.
         /// Use this flag in combinations with SHGDN_FORPARSING and SHGDN_FOREDITING.
         /// </summary>
         SHGDN_INFOLDER = 0x0001,

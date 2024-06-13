@@ -384,7 +384,7 @@ namespace SharpShell.ServerRegistration
         /// <summary>
         /// Sets the 'DisableProcessIsolation' value of the a COM server.
         /// </summary>
-        /// <seealso cref="https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/cc144118"/>
+        /// <seealso href="https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/cc144118"/>
         /// <param name="classId">The class identifier.</param>
         /// <param name="registrationType">Type of the registration.</param>
         /// <param name="disableProcessIsolationValue">The DisableProcessIsolation value, generally 1 or 0.</param>

@@ -43,7 +43,7 @@ namespace SharpShell.Helpers
         /// </returns>
         public static bool IS_INTRESOURCE(IntPtr resource)
         {
-            return ((uint)resource) <= ushort.MaxValue;
+            return (resource.ToInt64() | ushort.MaxValue) == ushort.MaxValue;
         }
     }
 }

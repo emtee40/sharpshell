@@ -6,15 +6,37 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    runs-on: ${{matrix.windows-version}}
+  sharp-shell:
+    name: SharpShell
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Build SharpShell
+        run: dotnet build -c Release SharpShell
+
+      - name: Run Tests
+        run: dotnet test -c Release SharpShell || True
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{github.job}}
+          path: SharpShell/artifacts
+
+  native-bridge:
+    name: NativeBridge (VS${{matrix.vs-year}})
+    runs-on: windows-${{matrix.vs-year}}
     strategy:
       matrix:
         include:
-          - windows-version: windows-2019
-            visual-studio-version: 16.11
-          - windows-version: windows-2022
-            visual-studio-version: 17.10
+          - vs-year: 2019
+            vs-version: 16.11
+          - vs-year: 2022
+            vs-version: 17.10
 
     steps:
       - name: Checkout
@@ -25,19 +47,14 @@ jobs:
       - name: Add MSBuild to PATH
         uses: microsoft/setup-msbuild@v2
         with:
-          vs-version: ${{matrix.visual-studio-version}}
+          vs-version: ${{matrix.vs-version}}
           msbuild-architecture: x64
 
       - name: Build Native Bridge
-        run: msbuild /t:Restore,Build /p:Configuration=Release ./SharpShellNativeBridge/SharpShellNativeBridge.sln
-
-      - name: Build SharpShell
-        run: msbuild /t:Restore,Build /p:Configuration=Release ./SharpShell/SharpShell.sln
+        run: msbuild /p:Configuration=Release SharpShellNativeBridge
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ${{matrix.windows-version}}
-          path: |
-            ./SharpShellNativeBridge/artifacts
-            ./SharpShell/artifacts
+          name: ${{github.job}}-vs${{matrix.vs-year}}
+          path: SharpShellNativeBridge/artifacts

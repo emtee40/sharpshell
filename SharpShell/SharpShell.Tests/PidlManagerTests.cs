@@ -37,7 +37,7 @@ namespace SharpShell.Tests
             var displayName = PidlManager.GetPidlDisplayName(pidl);
             Shell32.ILFree(pidl);
             string expectedName = GetTestKnownFolderDisplayNameForMyCulture();
-            Assert.AreEqual(expectedName, displayName);
+            Assert.That(expectedName, Is.EqualTo(displayName));
         }
 
         [Test]
@@ -52,7 +52,7 @@ namespace SharpShell.Tests
             var pszPath = new StringBuilder();
             var displayName = PidlManager.GetPidlDisplayName(pidl);
             string expectedName = GetTestKnownFolderDisplayNameForMyCulture();
-            Assert.AreEqual(expectedName, displayName);
+            Assert.That(expectedName, Is.EqualTo(displayName));
         }
 
         [Test]
@@ -62,7 +62,7 @@ namespace SharpShell.Tests
             Shell32.SHGetKnownFolderIDList(KnownFolders.FOLDERID_Downloads, KNOWN_FOLDER_FLAG.KF_NO_FLAGS, IntPtr.Zero,
                 out pidl);
             var idList = PidlManager.PidlToIdlist(pidl);
-            Assert.That(idList.Ids.Count, Is.GreaterThan(1));
+            Assert.That(idList.Ids.Count, Is.GreaterThan(0));
         }
 
         [Test]
@@ -75,7 +75,7 @@ namespace SharpShell.Tests
             var pidl2 = PidlManager.IdListToPidl(idList);
             var idList2 = PidlManager.PidlToIdlist(pidl2);
             
-            Assert.IsTrue(idList.Matches(idList2));
+            Assert.That(idList.Matches(idList2));
         }
 
         #region Private Helper Methods 

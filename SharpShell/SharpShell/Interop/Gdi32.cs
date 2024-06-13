@@ -89,7 +89,7 @@ namespace SharpShell.Interop
         /// <returns>If the lpvBits parameter is non-NULL and the function succeeds, the return value is the number of scan lines copied from the bitmap.
         /// If the lpvBits parameter is NULL and GetDIBits successfully fills the <see cref="BITMAPINFO"/> structure, the return value is nonzero.
         /// If the function fails, the return value is zero.
-        /// This function can return the following value: ERROR_INVALID_PARAMETER (87 (0×57))</returns>
+        /// This function can return the following value: ERROR_INVALID_PARAMETER (87 (0Ã—57))</returns>
         [DllImport("gdi32.dll", EntryPoint = "GetDIBits")]
         internal static extern int GetDIBits([In] IntPtr hdc, [In] IntPtr hbmp, uint uStartScan, uint cScanLines, [Out] byte[] lpvBits, ref BITMAPINFO lpbi, uint uUsage);
 

@@ -25,7 +25,7 @@ namespace SharpShell.Tests
         {
             IntPtr pidl;
             Shell32.SHGetKnownFolderIDList(KnownFolders.FOLDERID_Cookies, KNOWN_FOLDER_FLAG.KF_NO_FLAGS, IntPtr.Zero, out pidl);
-            Assert.IsTrue(pidl != IntPtr.Zero);
+            Assert.That(pidl, Is.Not.EqualTo(IntPtr.Zero));
             Assert.DoesNotThrow(() => Shell32.ILFree(pidl));
         }
 
@@ -36,7 +36,7 @@ namespace SharpShell.Tests
             IntPtr pidl;
             Shell32.SHGetFolderLocation(IntPtr.Zero, CSIDL.CSIDL_DESKTOP, IntPtr.Zero, 0, out pidl);
             var sb = new StringBuilder(260);
-            Assert.IsTrue(Shell32.SHGetPathFromIDList(pidl, sb));
+            Assert.That(Shell32.SHGetPathFromIDList(pidl, sb));
             Assert.That(sb.ToString(), Is.Not.Null.Or.Empty);
             Assert.DoesNotThrow(() => Shell32.ILFree(pidl));
         }

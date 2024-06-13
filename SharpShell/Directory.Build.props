@@ -10,5 +10,6 @@
     <AssemblyVersion>$(Version).0</AssemblyVersion>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <NeutralLanguage>en-US</NeutralLanguage>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
   </PropertyGroup>
 </Project>
