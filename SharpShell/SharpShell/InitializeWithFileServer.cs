@@ -15,6 +15,11 @@ namespace SharpShell
     {
         #region Implementation of IInitializeWithFile
 
+        /// <summary>
+        /// Initializes a handler with a file.
+        /// </summary>
+        /// <param name="pszFilePath">A string representing the file's path.</param>
+        /// <param name="grfMode">One of the following STGM values that indicates the access mode for grfMode. STGM_READ or STGM_READWRITE.</param>
         public int Initialize(string pszFilePath, STGM grfMode)
         {
             Log($"Intiailising a file based server for '{pszFilePath}' with mode '{grfMode}'.");

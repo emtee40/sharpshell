@@ -1,0 +1,15 @@
+<Project>
+  <PropertyGroup>
+    <Authors>Dave Kerr</Authors>
+    <Product>SharpShell</Product>
+    <Copyright>Copyright © Dave Kerr 2010-Present</Copyright>
+    <PackageTags>Shell,SharpShell,COM,Context Menu,Icon Handler</PackageTags>
+    <RepositoryUrl>https://github.com/dwmkerr/sharpshell</RepositoryUrl>
+    <Version>2.7.2</Version>
+    <FileVersion>$(Version).0</FileVersion>
+    <AssemblyVersion>$(Version).0</AssemblyVersion>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+  </PropertyGroup>
+</Project>

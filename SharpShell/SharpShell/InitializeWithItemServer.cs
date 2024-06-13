@@ -13,6 +13,11 @@ namespace SharpShell
     {
         #region Implementation of IInitializeWithItem
 
+        /// <summary>
+        /// Initializes a handler with a shell.
+        /// </summary>
+        /// <param name="shellItem">A pointer to an IShellItem interface that represents the stream source.</param>
+        /// <param name="accessMode">One of the following STGM values that indicates the access mode for shellItem. STGM_READ or STGM_READWRITE.</param>
         public int Initialize(IShellItem shellItem, STGM accessMode)
         {
             Log($"Intiailising a shell item server with mode '{accessMode}'.");

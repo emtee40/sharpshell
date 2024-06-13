@@ -1,116 +1,32 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D94D7E7A-4A71-4750-B5C6-2E797F5C4D0C}</ProjectGuid>
+    <TargetFramework>net48</TargetFramework>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ResourcesPropertySheet</RootNamespace>
-    <AssemblyName>ResourcesPropertySheet</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
     <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Loader\Win32Resource.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Loader\ResourceLoader.cs" />
-    <Compile Include="ResourceEditors\IconEditor.cs">
+    <Compile Update="ResourceEditors\IconEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ResourceEditors\IconEditor.Designer.cs">
-      <DependentUpon>IconEditor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ResourceEditors\BitmapEditor.cs">
+    <Compile Update="ResourceEditors\BitmapEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ResourceEditors\BitmapEditor.Designer.cs">
-      <DependentUpon>BitmapEditor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ResourceEditors\IResourceEditor.cs" />
-    <Compile Include="ResourcesPropertySheet.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResourcesView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ResourcesView.Designer.cs">
-      <DependentUpon>ResourcesView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Loader\ResType.cs" />
-    <Compile Include="Loader\Win32ResourceName.cs" />
-    <Compile Include="Loader\Win32Resources.cs" />
-    <Compile Include="Loader\Win32ResourceType.cs" />
+    <Compile Update="ResourcesView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Key.snk" />
+    <ProjectReference Include="..\..\..\SharpShell\SharpShell.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\SharpShell\SharpShell.csproj">
-      <Project>{b5d5f670-bfba-4d09-91c6-74bb12b7edd4}</Project>
-      <Name>SharpShell</Name>
-    </ProjectReference>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ResourceEditors\IconEditor.resx">
-      <DependentUpon>IconEditor.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ResourceEditors\BitmapEditor.resx">
-      <DependentUpon>BitmapEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ResourcesView.resx">
-      <DependentUpon>ResourcesView.cs</DependentUpon>
-    </EmbeddedResource>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>ResourcesPropertySheet.Tests, PublicKey=0024000004800000940000000602000000240000525341310004000001000100fd4d1b737ded9aed85fd63e4e856ca63fc9d49b5ec1134b4da812eb12ffe07c53a42ec95de36c16dde43792926e1fc3c3ca718c10a7679f96785681c5c12a65b1cfe62652186f5030de0e6d44dbb043e86c7a9230e7d61c6c4036fc9a6da9c2d817c8681228a328a32814c775c9212bfba4dbdc2c82eda1c3d66532648d338b5</_Parameter1>
+    </AssemblyAttribute>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ResourcesIcon.ico" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
